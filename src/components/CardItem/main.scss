@@ -1,0 +1,36 @@
+.CardItem {
+  border-radius: 20px;
+  border: 1px solid #000;
+  padding: 15px;
+  max-width: 250px;
+  width: 100%;
+  font-size: 18px;
+  margin-bottom: 30px;
+  transition: all .3s ease;
+
+  &:hover {
+    box-shadow: 0 0 10px rgba(0,0,0,0.5)
+  }
+
+  &__preview {
+    margin-bottom: 20px;
+  }
+
+  &__img {
+    width: 50%;
+  }
+
+  &__field {
+    &:not(:first-child) {
+      margin-top: 15px;
+    }
+
+    span {
+      display: inline-block;
+    }
+
+    &-title {
+      margin-right: 10px;
+    }
+  }
+}

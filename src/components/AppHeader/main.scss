@@ -1,0 +1,48 @@
+.AppHeader {
+  min-height: 100px;
+  background-color: rgb(66, 66, 138);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__logo {
+    color: #fff;
+    font-size: 50px;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-family: 'Gluten', cursive;
+
+    &-link {
+      text-decoration: none;
+    }
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__search {
+    display: flex;
+
+    &-input {
+      height: 30px;
+      border: 2px solid #c4c4c4;
+      font-size: 20px;
+      margin-right: 15px;
+      display: inline-block;
+      width: 250px;
+    }
+
+    &-btn {
+      height: 30px;
+      padding: 0 15px;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+}

@@ -1,5 +1,6 @@
-import React from 'react'
-import CardItem from './CardItem'
+import React from 'react';
+import CardItem from '../CardItem/CardItem';
+import './main.scss';
 
 function CardList({users}) {
   return (

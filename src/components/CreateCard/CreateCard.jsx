@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import './main.scss';
 
 function CreateCard({ createUserCard, usersLength }) {
   const fields = [
