@@ -17,4 +17,10 @@
   &__title {
     text-transform: capitalize;
   }
+
+  &__select {
+    display: block;
+    width: 100%;
+    max-width: 185px;
+  }
 }

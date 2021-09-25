@@ -1,10 +1,10 @@
 import React from 'react';
 import './main.scss';
 
-function CardItem({item}) {
+function CardItem({ item }) {
   const fields = ['name', 'age', 'gender', 'balance']
   return (
-    <div className="CardItem">
+    <div className="CardItem" data-id={ item._id }>
       <div className="CardItem__preview">
         <img src={item.picture} alt="avatar" draggable="false" className="CardItem__img" />
       </div>

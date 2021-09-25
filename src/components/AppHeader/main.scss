@@ -23,6 +23,11 @@
     justify-content: space-between;
   }
 
+  &__select {
+    max-width: 250px;
+    width: 100%;
+  }
+
   &__search {
     display: flex;
 

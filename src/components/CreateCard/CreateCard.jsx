@@ -6,7 +6,6 @@ function CreateCard({ createUserCard }) {
   const fields = [
     { type: 'text', name: 'name' },
     { type: 'number', name: 'age' },
-    { type: 'text', name: 'gender' },
     { type: 'number', name: 'balance' }
   ]
 
@@ -22,7 +21,7 @@ function CreateCard({ createUserCard }) {
       createUserCard({
         ...user,
         picture: 'http://placehold.it/32x32',
-        id: uniqId()
+        _id: uniqId()
       })
       setUser({
         name: '',
@@ -51,6 +50,14 @@ function CreateCard({ createUserCard }) {
           )
         })
       }
+      <div className="CreateCard__field">
+        <span className="CreateCard__title">Gender:</span>
+        <select value={ user.gender } className="CreateCard__select" onChange={ (e)=> setUser({...user, gender: e.target.value}) }>
+          <option value="" disabled >Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </div>
       <button type="button" onClick={ valid } className="CreateCard__btn">Create</button>
     </div>
   )
