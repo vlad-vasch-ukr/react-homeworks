@@ -1,7 +1,10 @@
-import React from 'react';
+import { useContext } from 'react';
 import './main.scss';
+import Context from '../../helpers/Context';
 
 function AppHeader() {
+  const { filterUsers } = useContext(Context)
+  
   return (
     <header className="AppHeader">
       <div className="container">
@@ -10,8 +13,12 @@ function AppHeader() {
             <span className="AppHeader__logo">cards</span>
           </a>
           <div className="AppHeader__search">
-            <input type="text" className="AppHeader__search-input" />
-            <button type="button" className="AppHeader__search-btn">Search</button>
+            <input
+              type="text"
+              placeholder="Search"
+              onChange={ (e) => filterUsers(e.target.value) }
+              className="AppHeader__search-input"
+            />
           </div>
         </div>
       </div>

@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import './main.scss';
+import uniqId from 'uniqid';
 
-function CreateCard({ createUserCard, usersLength }) {
+function CreateCard({ createUserCard }) {
   const fields = [
     { type: 'text', name: 'name' },
     { type: 'number', name: 'age' },
@@ -21,7 +22,7 @@ function CreateCard({ createUserCard, usersLength }) {
       createUserCard({
         ...user,
         picture: 'http://placehold.it/32x32',
-        id: usersLength
+        id: uniqId()
       })
       setUser({
         name: '',
@@ -29,7 +30,6 @@ function CreateCard({ createUserCard, usersLength }) {
 		    gender: '',
 		    balance: '',
       })
-      console.log(usersLength)
     } else console.log('Wrong!!!')
   }
 
