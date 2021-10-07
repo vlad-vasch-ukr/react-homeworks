@@ -1,0 +1,43 @@
+.Timer {
+  &__btn {
+    border: none;
+    background-color: transparent;
+    padding: 15px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    transition: all .3s linear;
+    font-size: 18px;
+
+    &:not(:first-child) {
+      margin-left: 10px;
+    }
+  }
+
+  &__actions {
+    display: flex;
+  }
+
+  &__time {
+    text-align: center;
+  }
+
+  .red {
+    background-color: red;
+  }
+
+  .green {
+    background-color: green;
+  }
+
+  .blue {
+    background-color: blue;
+  }
+
+  .orange {
+    background-color: orange;
+  }
+}
