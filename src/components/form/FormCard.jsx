@@ -5,6 +5,7 @@ import './main.scss';
 import StepFields from '../renderFields/StepFields';
 import UploadPhoto from '../uploadPhoto/UploadPhoto';
 import ResultForm from '../ResultForm/ResultForm';
+import SwitchButton from '../switchButton/SwitchButton';
 
 export default function FormCard() {
   const [state] = useFormStore()
@@ -46,15 +47,18 @@ export default function FormCard() {
   }
 
   return (
-    <Card style={{maxWidth: '500px', width: '100%', border: '1px solid #1976d2', padding: '20px'}}>
-      <h1 className="main-title">
-        { state.step < 5 ? `Шаг: ${state.step}` : 'Спасибо за регистрацию' }
-      </h1>
-      { state.step >= 1 && state.step < 3 || state.step === 4 ?
-        <StepFields rules={ stepFields[state.step].rules } fieldsDescription={ stepFields[state.step].fields } /> : ''
-      }
-      { state.step === 3 && <UploadPhoto /> }
-      { state.step === 5 && <ResultForm /> }
-    </Card>
+    <div className={["wrapper", state.darkTheme ? 'dark-theme' : ''].join(' ')}>
+      <Card style={{maxWidth: '500px', width: '100%', border: '1px solid #1976d2', padding: '20px'}}>
+        <h1 className="main-title">
+          { state.step < 5 ? `Шаг: ${state.step}` : 'Спасибо за регистрацию' }
+        </h1>
+        { state.step >= 1 && state.step < 3 || state.step === 4 ?
+          <StepFields rules={ stepFields[state.step].rules } fieldsDescription={ stepFields[state.step].fields } /> : ''
+        }
+        { state.step === 3 && <UploadPhoto /> }
+        { state.step === 5 && <ResultForm /> }
+      </Card>
+      <SwitchButton />
+    </div>
   )
 }
