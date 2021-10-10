@@ -1,0 +1,29 @@
+.UploadPhoto {
+  &__avatar {
+    display: block;
+    max-width: 100%;
+    cursor: pointer;
+    transition: all .3s linear;
+    border: 1px solid transparent;
+    border-radius: 5px;
+
+    &:hover {
+      border-color: rgb(25, 118, 210);
+    }
+
+    &.active {
+      border-color: rgb(25, 118, 210);
+    }
+  }
+
+  &__error {
+    color: #d32f2f;
+    height: 20px;
+    text-align: center;
+
+    &.active::before {
+      display: inline;
+      content: "⚠ ";
+    }
+  }
+}
