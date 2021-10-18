@@ -1,6 +1,8 @@
 .game {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
+    position: relative;
 }
 .game-info {
     margin: 15px;

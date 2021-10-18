@@ -5,6 +5,7 @@ import { gameParams } from '../../constants';
 
 export default function Board({ squares, onClick }) {
     const sizes = new Array(gameParams.size).fill(null);
+
     return (
         <div className="board">
             {

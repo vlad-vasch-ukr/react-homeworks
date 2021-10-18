@@ -1,0 +1,16 @@
+.start-game {
+  position: absolute!important;
+  max-width: 300px;
+  width: 100%;
+  height: 70px;
+  font-size: 25px!important;
+  color: black!important;
+  background-color: yellow!important;
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  &:hover {
+    background-color: yellow;
+  }
+}
