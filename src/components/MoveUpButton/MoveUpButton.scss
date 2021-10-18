@@ -1,0 +1,13 @@
+.move-up-button {
+  position: absolute!important;
+  background-color: #fff!important;
+  height: 40px!important;
+  color: #000!important;
+  padding: 0!important;
+  top: -25px!important;
+  right: -110px!important;
+
+  &:hover {
+    background-color: #fff!important;
+  }
+}

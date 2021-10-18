@@ -4,6 +4,8 @@ export const UPDATE_NEXT_MOVE = 'update curr move';
 export const UPDATE_PLAYERS_INFO = 'update player info';
 export const CLEAR_HISTORY = 'clear history';
 export const CLEAR_HISTORY_BY_INDEX = 'clear history by index';
+export const UPDATE_GAME_START = 'update game start';
+export const UPDATE_GAME_END = 'update game end';
 
 export const addToHistory = (squares) => ({
     type: ADD_TO_HISTORY,
@@ -32,4 +34,14 @@ export const clearHistory = () => ({
 export const clearHistoryByIndex = (index) => ({
     type: CLEAR_HISTORY_BY_INDEX,
     payload: index
+})
+
+export const updateGameEnd = (boolean) => ({
+    type: UPDATE_GAME_END,
+    payload: boolean
+})
+
+export const updateGameStart = (boolean) => ({
+    type: UPDATE_GAME_START,
+    payload: boolean
 })

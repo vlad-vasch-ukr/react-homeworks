@@ -1,16 +1,26 @@
 import { Typography, Box, Button } from '@mui/material';
 import { useGameStore } from '../../context';
-import { clearHistoryByIndex, updateNextMove } from '../../actions';
-import { getPlayerName, getSignTurn } from '../../utils';
+import { clearHistoryByIndex, updateNextMove, addWinner, updateGameEnd, updateGameStart } from '../../actions';
+import { getSignTurn } from '../../utils';
 import './ListOfMoves.scss';
 
 export default function ListOfMoves() {
   const [state, dispatch] = useGameStore();
   const goToPrevStep = (index) => {
     const move = getSignTurn(index , state.players.first.mark, state.players.second.mark, state.players.firstMove);
-    const nextMove = getPlayerName(state.players.first, state.players.second, move);
+    let nextMove = null;
+    if (state.players.first.mark === move) {
+      nextMove = state.players.first.name || state.players.first.mark
+    } else {
+      nextMove = state.players.second.name || state.players.second.mark
+    }
+    if (index === 1) {
+      dispatch(updateGameStart(false));
+    }
     dispatch(updateNextMove(nextMove));
     dispatch(clearHistoryByIndex(index));
+    dispatch(addWinner(null));
+    dispatch(updateGameEnd(false));
   }
 
   return (

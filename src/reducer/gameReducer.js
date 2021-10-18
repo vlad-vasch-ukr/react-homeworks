@@ -1,10 +1,12 @@
 import { gameParams } from '../constants/gameParams';
-import { ADD_TO_HISTORY, ADD_WINNER, UPDATE_NEXT_MOVE, UPDATE_PLAYERS_INFO, CLEAR_HISTORY, CLEAR_HISTORY_BY_INDEX } from '../actions';
+import { ADD_TO_HISTORY, ADD_WINNER, UPDATE_NEXT_MOVE, UPDATE_PLAYERS_INFO, CLEAR_HISTORY, CLEAR_HISTORY_BY_INDEX, UPDATE_GAME_END, UPDATE_GAME_START } from '../actions';
 
 export const initialState = {
     isXTurn: true,
     winner: null,
     nextMove: 'Player 1',
+    gameStart: false,
+    gameEnd: false,
     players: {
         first: {
             name: 'Player 1',
@@ -54,6 +56,16 @@ export const gameReducer = (state=initialState, action) => {
             return {
                 ...state,
                 history: state.history.slice(0, action.payload)
+            }
+        case UPDATE_GAME_START:
+            return {
+                ...state,
+                gameStart: action.payload
+            }
+        case UPDATE_GAME_END:
+            return {
+                ...state,
+                gameEnd: action.payload
             }
         default:
             return state;
