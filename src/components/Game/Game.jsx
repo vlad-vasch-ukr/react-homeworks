@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './Game.scss';
 import Board from '../Board/Board';
 import { useGameStore } from '../../context';
@@ -10,13 +10,24 @@ import Settings from '../Settings/Settings';
 import SettingsButton from '../SettingsButton/SettingsButton';
 import StartGameButton from '../StartGameButton/StartGameButton';
 import MoveUpButton from '../MoveUpButton/MoveUpButton';
+import WinnersList from '../WinnersList/WinnersList';
 import { getPlayerName } from '../../utils';
-import { updateNextMove, clearHistory, updateGameEnd, updateGameStart } from '../../actions';
+import { updateNextMove, clearHistory, updateGameEnd, updateGameStart, updateWinnersList } from '../../actions';
 
 export default function Game() {
     const [state, dispatch] = useGameStore();
     const currentStep = state.history[state.history.length - 1];
     const [showModal, setShowModal] = useState(false);
+
+    useEffect(() => {
+      const store = localStorage.getItem('winnersList');
+      const list = store ? JSON.parse(store) : [];
+      dispatch(updateWinnersList(list));
+    }, [])
+
+    useEffect(() => {
+      localStorage.setItem('winnersList', JSON.stringify(state.winnersList))
+    }, [state.winnersList])
 
     const handleClick = (i) => {
       const squares = [...currentStep.squares];
@@ -25,6 +36,10 @@ export default function Game() {
 
       const winner = calculateWinner(squares);
       if (winner) {
+        dispatch(updateWinnersList([{
+          winner: state.nextMove,
+          date: new Date().toLocaleDateString()
+        }]));
         dispatch(updateGameEnd(true));
         dispatch(addWinner(state.nextMove));
       }
@@ -55,6 +70,7 @@ export default function Game() {
         <ListOfMoves />
         <SettingsButton handleOpen={ toggleModal } disabled={ state.gameStart } />
         <MoveUpButton />
+        <WinnersList />
         { state.gameEnd && <StartGameButton startGame={ startNewGame } />}
         <Modal open={ showModal } title='Settings' handleClose={ toggleModal }>
           <Settings handleClose={ toggleModal } />
