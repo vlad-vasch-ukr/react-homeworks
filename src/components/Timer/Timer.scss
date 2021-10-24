@@ -1,0 +1,31 @@
+.timer {
+  user-select: none;
+
+  &__actions {
+    display: flex!important;
+    justify-content: space-between!important;
+    max-width: 300px;
+    margin: 20px auto 0 auto!important;
+  }
+
+  &__button {
+    color: #000!important;
+    padding: 20px!important;
+
+    &:disabled {
+      opacity: .5!important;
+    }
+
+    &:first-child {
+      background-color: green!important;
+    }
+
+    &:nth-child(2) {
+      background-color: red!important;
+    }
+
+    &:last-child {
+      background-color: yellow!important;
+    }
+  }
+}

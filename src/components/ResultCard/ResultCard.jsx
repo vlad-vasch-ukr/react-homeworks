@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { deleteUserById } from "../../store/actions";
 import PropTypes from 'prop-types';
 
-export default function ResultCard({ id, name, time }) {
+export default function ResultCard({ id, firstName, time }) {
   const dispatch = useDispatch();
 
   return (
@@ -12,15 +12,14 @@ export default function ResultCard({ id, name, time }) {
         ID: { id }
       </Typography>
       <Typography mb={ 2 } component='p' sx={{ fontSize: '16px' }}>
-        Name: { name }
+        Name: { firstName }
       </Typography>
       <Typography mb={ 2 } component='p' sx={{ fontSize: '16px' }}>
         Time: { time }
       </Typography>
       <Button
         variant="contained"
-        sx={{ fontSize: '16px' }}
-        sx={{ display: 'block', margin: '0 auto' }}
+        sx={{ fontSize: '16px', display: 'block', margin: '0 auto' }}
         onClick={ () => dispatch(deleteUserById(id)) }
       >
         delete
@@ -31,6 +30,6 @@ export default function ResultCard({ id, name, time }) {
 
 ResultCard.propTypes = {
   id: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
+  firstName: PropTypes.string.isRequired,
   time: PropTypes.string.isRequired
 }

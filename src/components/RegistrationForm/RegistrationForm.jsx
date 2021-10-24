@@ -1,11 +1,15 @@
 import { Card, TextField, Typography, Button } from '@mui/material';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+import { updateUnsavedNewUser, showNewUserTimer } from '../../store/actions';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import PropTypes from 'prop-types';
 import './RegistrationForm.scss';
+const getUid = require('get-uid');
 
 export default function RegistrationForm({ className }) {
+  const dispatch = useDispatch();
   const rules =  yup.object().shape({
     firstName: yup.string().required('Field required'),
     secondName: yup.string().required('Field required')
@@ -16,8 +20,11 @@ export default function RegistrationForm({ className }) {
   })
 
   const submitForm = () => {
-    console.log(getValues())
-    reset()
+    const newUser = getValues();
+    newUser.id = getUid();
+    dispatch(updateUnsavedNewUser(newUser));
+    dispatch(showNewUserTimer(true));
+    reset();
   }
 
   return (
