@@ -6,7 +6,12 @@ const API = axios.create({
   baseURL: BASE_URL,
 });
 
-export async function fetchUsersApi() {
-  const { data } = await API.get('/users');
+export async function fetchUsersApi(id) {
+  const { data } = await API.get(`/participants?competitionId_like=${id}`);
+  return data;
+}
+
+export async function fetchCompetitionsApi() {
+  const { data } = await API.get('/competitions');
   return data;
 }

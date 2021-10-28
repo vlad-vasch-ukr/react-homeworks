@@ -1,3 +1,4 @@
 {
-  "/users": "/users"
+  "/participants": "/participants?id_like=:id",
+  "/competitions": "/competitions"
 }

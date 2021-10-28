@@ -1,25 +1,23 @@
 import { TextField } from '@mui/material';
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
-import { updateUserSearchValue } from '../../store/actions';
 import './Search.scss';
 
-export default function Search({ className }) {
-  const dispatch = useDispatch();
-
+export default function Search({ className, searchHandler }) {
   return (
     <TextField
       placeholder='Enter participant name...'
       className={['search', ...className].join(' ')}
-      onChange={ ({ target: { value } }) => dispatch(updateUserSearchValue(value)) }
+      onChange={ (e) => searchHandler.bind(null, e.target.value)() }
     />
   )
 }
 
 Search.propTypes = {
-  className: PropTypes.array
+  className: PropTypes.array,
+  searchHandler: PropTypes.func
 }
 
 Search.defaultProps = {
-  className: []
+  className: [],
+  searchHandler: () => {}
 }

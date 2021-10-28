@@ -1,18 +1,18 @@
 import { 
   FETCH_USERS_SUCCESS, ADD_NEW_USER, 
-  DELETE_USER_BY_ID, UPDATE_USER_SEARCH_VALUE, 
+  DELETE_USER_BY_ID, 
   UPDATE_UNSAVED_NEW_USER, SHOW_NEW_USER_TIMER, 
-  GET_WINNER 
+  GET_WINNER, FETCH_COMPETITIONS_SUCCESS
 } from "../actions/users";
 import { calculateWinner } from "../../utils/calculateWinner";
 
 export const initialState = {
   users: [],
   usersAmount: '',
-  serchUserValue: '',
   unsavedUser: {},
   toggleNewUserTimer: false,
-  winner: null
+  winner: null,
+  competitions: []
 }
 
 export function usersReducer(state = initialState, action) {
@@ -22,6 +22,11 @@ export function usersReducer(state = initialState, action) {
         ...state,
         users: action.payload,
         usersAmount: action.payload.length
+      }
+    case FETCH_COMPETITIONS_SUCCESS:
+      return {
+        ...state,
+        competitions: action.payload
       }
     case ADD_NEW_USER:
       return {
@@ -34,11 +39,6 @@ export function usersReducer(state = initialState, action) {
         ...state,
         users: state.users.filter(user => user.id !== action.payload),
         usersAmount: state.users.length - 1
-      }
-    case UPDATE_USER_SEARCH_VALUE:
-      return {
-        ...state,
-        serchUserValue: action.payload
       }
     case UPDATE_UNSAVED_NEW_USER:
       return {
