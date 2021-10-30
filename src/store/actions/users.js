@@ -4,7 +4,8 @@ export const DELETE_USER_BY_ID = '[USERS] delete user by id';
 export const UPDATE_UNSAVED_NEW_USER = '[USER] update usaved new user';
 export const SHOW_NEW_USER_TIMER = '[USER] show new user timer';
 export const GET_WINNER = '[USER] get winner';
-export const FETCH_COMPETITIONS_SUCCESS = '[USERS] fetch competitions success'
+export const FETCH_COMPETITIONS_SUCCESS = '[USERS] fetch competitions success';
+export const ADD_NEW_COMPETITION = '[USERS] add new competition';
 
 export const fetchUsersSuccess = (users) => ({
   type: FETCH_USERS_SUCCESS,
@@ -36,6 +37,12 @@ export const showNewUserTimer = (bool) => ({
   payload: bool
 })
 
-export const getWinner = () => ({
-  type: GET_WINNER
+export const getWinner = (id) => ({
+  type: GET_WINNER,
+  payload: id
+})
+
+export const addNewCompetition = (competition) => ({
+  type: ADD_NEW_COMPETITION,
+  payload: competition
 })

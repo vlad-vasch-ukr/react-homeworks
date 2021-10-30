@@ -2,7 +2,8 @@ import {
   FETCH_USERS_SUCCESS, ADD_NEW_USER, 
   DELETE_USER_BY_ID, 
   UPDATE_UNSAVED_NEW_USER, SHOW_NEW_USER_TIMER, 
-  GET_WINNER, FETCH_COMPETITIONS_SUCCESS
+  GET_WINNER, FETCH_COMPETITIONS_SUCCESS,
+  ADD_NEW_COMPETITION
 } from "../actions/users";
 import { calculateWinner } from "../../utils/calculateWinner";
 
@@ -11,7 +12,6 @@ export const initialState = {
   usersAmount: '',
   unsavedUser: {},
   toggleNewUserTimer: false,
-  winner: null,
   competitions: []
 }
 
@@ -53,7 +53,21 @@ export function usersReducer(state = initialState, action) {
     case GET_WINNER:
       return {
         ...state,
-        winner: calculateWinner(state.users)
+        competitions: state.competitions.map(competition => {
+          if (competition.id === +action.payload) {
+            const winner = calculateWinner(state.users)
+            return Object.assign({}, competition, {
+              winner: { name: `${winner.firstName} ${winner.secondName}`, time: winner.time },
+              status: 'finished'
+            })
+          }
+          return competition
+        })
+      }
+    case ADD_NEW_COMPETITION:
+      return {
+        ...state,
+        competitions: [...state.competitions, action.payload]
       }
     default:
       return state;

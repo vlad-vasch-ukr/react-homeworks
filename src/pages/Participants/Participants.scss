@@ -2,18 +2,21 @@
   max-width: 1200px;
   width: 100%;
   margin: 30px auto;
-  display: grid;
-  grid-template-columns: 1fr 400px;
-  grid-template-rows: min-content;
-  grid-template-areas: "search search"
-                       "content side";
-  grid-row-gap: 25px;
+  
+  &.active {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    grid-template-rows: min-content;
+    grid-template-areas: "search search"
+                        "content side";
+    grid-row-gap: 25px;
 
-  .app-search {
-    grid-area: search;
-  }
+    .app-search {
+      grid-area: search;
+    }
 
-  .app-side {
-    grid-area: side;
+    .app-side {
+      grid-area: side;
+    }
   }
 }

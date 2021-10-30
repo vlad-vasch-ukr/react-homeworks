@@ -27,19 +27,25 @@ module.exports = () => ({
       id: 956737354,
       name: 'Running 100 meters',
       status: 'finished',
-      winner: 'Anna Karenina'
+      winner: {
+        name: 'Anna Karenina',
+        time: '00:02:04'
+      }
     },
     {
       id: 704194432,
       name: 'Running 50 meters',
       status: 'finished',
-      winner: 'Mike ITyLOpi'
+      winner: {
+        name: 'Mike ITyLOpi',
+        time: '00:10:30'
+      }
     },
     {
       id: 574457113,
       name: 'Do nothing',
       status: 'active',
-      winner: 'Dominik Torretto'
+      winner: null
     }
   ]
 })
